@@ -14,6 +14,12 @@ public class Location {
 
     private double longitude;
 
+    /**
+     * Converts degree to Radian
+     *
+     * @param location
+     * @return
+     */
     public static Location toRadian(Location location) {
         if (location == null) {
             throw new InvalidLocationException("Location is null. Unable to convert its latitude and longitude values to radian");
