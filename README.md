@@ -8,6 +8,13 @@ Code for intercom test 1. The application is written using spring boot, Gson, lo
 
 Please issue this command from terminal from project root folder.
 
+### How To Test
+
+`mvn test`
+
+Please issue this command from terminal from project root folder.
+
+
 ### Output
 
 ```txt
