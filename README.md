@@ -13,10 +13,10 @@ Please issue this command from terminal from project root folder.
 ```txt
 2019-04-30 02:26:00.840  INFO 37424 --- [main] c.i.g.service.impl.CustomerServiceImpl   : Total fetched customers: 32
 2019-04-30 02:26:00.842  INFO 37424 --- [main] c.i.g.GeoCircleApplicationRunner         : Total customers matched in range of 100.0 km : 16
-2019-04-30 02:26:00.844  INFO 37424 --- [main] c.i.g.GeoCircleApplicationRunner         : 4	   Ian Kehoe	{"user_id":4,"latitude":53.2451022,"longitude":-6.238335,"name":"Ian Kehoe"}
-2019-04-30 02:26:00.844  INFO 37424 --- [main] c.i.g.GeoCircleApplicationRunner         : 5	   Nora Dempsey	{"user_id":5,"latitude":53.1302756,"longitude":-6.2397222,"name":"Nora Dempsey"}
-2019-04-30 02:26:00.844  INFO 37424 --- [main] c.i.g.GeoCircleApplicationRunner         : 6	   Theresa Enright	{"user_id":6,"latitude":53.1229599,"longitude":-6.2705202,"name":"Theresa Enright"}
-2019-04-30 02:26:00.845  INFO 37424 --- [main] c.i.g.GeoCircleApplicationRunner         : 8	   Eoin Ahearn	{"user_id":8,"latitude":54.0894797,"longitude":-6.18671,"name":"Eoin Ahearn"}
+2019-04-30 02:26:00.844  INFO 37424 --- [main] c.i.g.GeoCircleApplicationRunner         : 4	Ian Kehoe	{"user_id":4,"latitude":53.2451022,"longitude":-6.238335,"name":"Ian Kehoe"}
+2019-04-30 02:26:00.844  INFO 37424 --- [main] c.i.g.GeoCircleApplicationRunner         : 5	Nora Dempsey	{"user_id":5,"latitude":53.1302756,"longitude":-6.2397222,"name":"Nora Dempsey"}
+2019-04-30 02:26:00.844  INFO 37424 --- [main] c.i.g.GeoCircleApplicationRunner         : 6	Theresa Enright	{"user_id":6,"latitude":53.1229599,"longitude":-6.2705202,"name":"Theresa Enright"}
+2019-04-30 02:26:00.845  INFO 37424 --- [main] c.i.g.GeoCircleApplicationRunner         : 8	Eoin Ahearn	{"user_id":8,"latitude":54.0894797,"longitude":-6.18671,"name":"Eoin Ahearn"}
 2019-04-30 02:26:00.845  INFO 37424 --- [main] c.i.g.GeoCircleApplicationRunner         : 11	Richard Finnegan	{"user_id":11,"latitude":53.008769,"longitude":-6.1056711,"name":"Richard Finnegan"}
 2019-04-30 02:26:00.845  INFO 37424 --- [main] c.i.g.GeoCircleApplicationRunner         : 12	Christina McArdle	{"user_id":12,"latitude":52.986375,"longitude":-6.043701,"name":"Christina McArdle"}
 2019-04-30 02:26:00.845  INFO 37424 --- [main] c.i.g.GeoCircleApplicationRunner         : 13	Olive Ahearn	{"user_id":13,"latitude":53.0,"longitude":-7.0,"name":"Olive Ahearn"}
