@@ -1,0 +1,128 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: GeoCircleApplicationRunner</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.intercom.geocircle</a> ]
+</div>
+
+<h1>Coverage Summary for Class: GeoCircleApplicationRunner (com.intercom.geocircle)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">GeoCircleApplicationRunner</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/ 3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    56.2%
+  </span>
+  <span class="absValue">
+    (9/ 16)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.intercom.geocircle;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.intercom.geocircle.common.Constants;
+<i>4</i>&nbsp;import com.intercom.geocircle.config.ApplicationConfig;
+<i>5</i>&nbsp;import com.intercom.geocircle.model.Customer;
+<i>6</i>&nbsp;import com.intercom.geocircle.service.CustomerService;
+<i>7</i>&nbsp;import com.intercom.geocircle.utils.CommonUtils;
+<i>8</i>&nbsp;import lombok.extern.slf4j.Slf4j;
+<i>9</i>&nbsp;import org.springframework.boot.ApplicationArguments;
+<i>10</i>&nbsp;import org.springframework.boot.ApplicationRunner;
+<i>11</i>&nbsp;import org.springframework.stereotype.Component;
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;import java.util.List;
+<i>14</i>&nbsp;
+<b class="fc"><i>15</i>&nbsp;@Slf4j</b>
+<i>16</i>&nbsp;@Component
+<i>17</i>&nbsp;public class GeoCircleApplicationRunner implements ApplicationRunner {
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;    private final CustomerService customerService;
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;    private final ApplicationConfig applicationConfig;
+<i>22</i>&nbsp;
+<b class="fc"><i>23</i>&nbsp;    public GeoCircleApplicationRunner(CustomerService customerService, ApplicationConfig applicationConfig) {</b>
+<b class="fc"><i>24</i>&nbsp;        this.customerService = customerService;</b>
+<b class="fc"><i>25</i>&nbsp;        this.applicationConfig = applicationConfig;</b>
+<b class="fc"><i>26</i>&nbsp;    }</b>
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;    @Override
+<i>29</i>&nbsp;    public void run(ApplicationArguments args) throws Exception {
+<b class="fc"><i>30</i>&nbsp;        String fileUrl = applicationConfig.getFilePath();</b>
+<i>31</i>&nbsp;
+<b class="fc"><i>32</i>&nbsp;        if (args.containsOption(Constants.FILEPATH_OPTION_NAME)) {</b>
+<b class="fc"><i>33</i>&nbsp;            fileUrl = args.getOptionValues(Constants.FILEPATH_OPTION_NAME).get(0);</b>
+<i>34</i>&nbsp;        }
+<i>35</i>&nbsp;
+<b class="fc"><i>36</i>&nbsp;        List&lt;Customer&gt; allCustomers = customerService.getCustomers(fileUrl);</b>
+<b class="nc"><i>37</i>&nbsp;        List&lt;Customer&gt; customerList = customerService.searchCustomersWithinDistance(allCustomers,</b>
+<b class="nc"><i>38</i>&nbsp;                applicationConfig.getLocation(), applicationConfig.getMaxDistance());</b>
+<i>39</i>&nbsp;
+<b class="nc"><i>40</i>&nbsp;        LOGGER.info(&quot;Total customers matched in range of {} km : {}&quot;, applicationConfig.getMaxDistance(), customerList.size());</b>
+<b class="nc"><i>41</i>&nbsp;        for (Customer customer : customerList) {</b>
+<b class="nc"><i>42</i>&nbsp;            LOGGER.info(&quot;{}\t{}\t{}&quot;, customer.getId(), customer.getName(), CommonUtils.toJson(customer));</b>
+<b class="nc"><i>43</i>&nbsp;        }</b>
+<b class="nc"><i>44</i>&nbsp;    }</b>
+<i>45</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-04-30 02:21</div>
+</div>
+</body>
+</html>

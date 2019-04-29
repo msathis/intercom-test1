@@ -1,0 +1,77 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: CustomerService</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.intercom.geocircle.service</a> ]
+</div>
+
+<h1>Coverage Summary for Class: CustomerService (com.intercom.geocircle.service)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">CustomerService</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.intercom.geocircle.service;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.intercom.geocircle.model.Customer;
+<i>4</i>&nbsp;import com.intercom.geocircle.model.Location;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;import java.io.IOException;
+<i>7</i>&nbsp;import java.util.List;
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;public interface CustomerService {
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;    /**
+<i>12</i>&nbsp;     * Returns master data of customers. This list is sorted and cached for future requests.
+<i>13</i>&nbsp;     *
+<i>14</i>&nbsp;     * @param path path to file containing customer details
+<i>15</i>&nbsp;     * @return an object of {@link List&lt;Customer&gt; }
+<i>16</i>&nbsp;     * @throws IOException Throws IOException if the url is invalid or data is corrupted.
+<i>17</i>&nbsp;     */
+<i>18</i>&nbsp;    List&lt;Customer&gt; getCustomers(String path) throws IOException;
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;    /**
+<i>21</i>&nbsp;     * Returns list of customers within defined range. Default value of range is 100km
+<i>22</i>&nbsp;     *
+<i>23</i>&nbsp;     * @param customers      {@link List&lt;Customer&gt; }
+<i>24</i>&nbsp;     * @param officeLocation {@link Location}
+<i>25</i>&nbsp;     * @param maxDistance    Maximum distance range
+<i>26</i>&nbsp;     * @return an object of {@link List&lt;Customer&gt; }
+<i>27</i>&nbsp;     * @throws IOException If the master data is not fetchable IOException is thrown.
+<i>28</i>&nbsp;     */
+<i>29</i>&nbsp;    List&lt;Customer&gt; searchCustomersWithinDistance(List&lt;Customer&gt; customers, Location officeLocation, Double maxDistance) throws IOException;
+<i>30</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-04-30 02:21</div>
+</div>
+</body>
+</html>
