@@ -58,10 +58,10 @@
 </td>
 <td class="coverageStat">
   <span class="percent">
-    56.2%
+    100%
   </span>
   <span class="absValue">
-    (9/ 16)
+    (16/ 16)
   </span>
 </td>
 </tr>
@@ -108,21 +108,21 @@
 <i>34</i>&nbsp;        }
 <i>35</i>&nbsp;
 <b class="fc"><i>36</i>&nbsp;        List&lt;Customer&gt; allCustomers = customerService.getCustomers(fileUrl);</b>
-<b class="nc"><i>37</i>&nbsp;        List&lt;Customer&gt; customerList = customerService.searchCustomersWithinDistance(allCustomers,</b>
-<b class="nc"><i>38</i>&nbsp;                applicationConfig.getLocation(), applicationConfig.getMaxDistance());</b>
+<b class="fc"><i>37</i>&nbsp;        List&lt;Customer&gt; customerList = customerService.searchCustomersWithinDistance(allCustomers,</b>
+<b class="fc"><i>38</i>&nbsp;                applicationConfig.getLocation(), applicationConfig.getMaxDistance());</b>
 <i>39</i>&nbsp;
-<b class="nc"><i>40</i>&nbsp;        LOGGER.info(&quot;Total customers matched in range of {} km : {}&quot;, applicationConfig.getMaxDistance(), customerList.size());</b>
-<b class="nc"><i>41</i>&nbsp;        for (Customer customer : customerList) {</b>
-<b class="nc"><i>42</i>&nbsp;            LOGGER.info(&quot;{}\t{}\t{}&quot;, customer.getId(), customer.getName(), CommonUtils.toJson(customer));</b>
-<b class="nc"><i>43</i>&nbsp;        }</b>
-<b class="nc"><i>44</i>&nbsp;    }</b>
+<b class="fc"><i>40</i>&nbsp;        LOGGER.info(&quot;Total customers matched in range of {} km : {}&quot;, applicationConfig.getMaxDistance(), customerList.size());</b>
+<b class="fc"><i>41</i>&nbsp;        for (Customer customer : customerList) {</b>
+<b class="fc"><i>42</i>&nbsp;            LOGGER.info(&quot;{}\t{}\t{}&quot;, customer.getId(), customer.getName(), CommonUtils.toJson(customer));</b>
+<b class="fc"><i>43</i>&nbsp;        }</b>
+<b class="fc"><i>44</i>&nbsp;    }</b>
 <i>45</i>&nbsp;}
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2019-04-30 09:57</div>
+    <div style="float:right;">generated on 2019-04-30 14:08</div>
 </div>
 </body>
 </html>
