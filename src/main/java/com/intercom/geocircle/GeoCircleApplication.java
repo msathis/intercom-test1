@@ -6,10 +6,10 @@ import org.springframework.cache.annotation.EnableCaching;
 
 @SpringBootApplication
 @EnableCaching
-public class GeocircleApplication {
+public class GeoCircleApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(GeocircleApplication.class, args);
+        SpringApplication.run(GeoCircleApplication.class, args);
     }
 
 }
