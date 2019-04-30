@@ -1,6 +1,8 @@
 package com.intercom.geocircle.service;
 
+import com.intercom.geocircle.TestConstants;
 import com.intercom.geocircle.config.ApplicationConfig;
+import com.intercom.geocircle.exception.InvalidFileException;
 import com.intercom.geocircle.model.Customer;
 import com.intercom.geocircle.model.Location;
 import com.intercom.geocircle.service.impl.CustomerServiceImpl;
@@ -23,7 +25,7 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class CustomerServiceTest {
 
-    private static final String FILE_PATH = "https://s3.amazonaws.com/intercom-take-home-test/customers.txt";
+    private static final String FILE_PATH_MALFORMED = "";
 
     @Mock
     private ApplicationConfig applicationConfig = new ApplicationConfig();
@@ -44,9 +46,15 @@ public class CustomerServiceTest {
         officeLocation = new Location(53.339428d, -6.257664d);
     }
 
+    @Test(expected = InvalidFileException.class)
+    public void testMalformedUrl() throws IOException {
+        when(applicationConfig.getFilePath()).thenReturn(FILE_PATH_MALFORMED);
+        customerService.getCustomers(applicationConfig.getFilePath());
+    }
+
     @Test
     public void testCustomersCount() throws IOException {
-        when(applicationConfig.getFilePath()).thenReturn(FILE_PATH);
+        when(applicationConfig.getFilePath()).thenReturn(TestConstants.FILE_PATH);
         assertEquals(customerService.getCustomers(applicationConfig.getFilePath()).size(), 32);
     }
 

@@ -1,6 +1,7 @@
 package com.intercom.geocircle.service.impl;
 
 import com.intercom.geocircle.common.Constants;
+import com.intercom.geocircle.exception.InvalidFileException;
 import com.intercom.geocircle.model.Customer;
 import com.intercom.geocircle.model.Location;
 import com.intercom.geocircle.service.CustomerService;
@@ -15,6 +16,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -39,25 +41,34 @@ public class CustomerServiceImpl implements CustomerService {
     @Cacheable("customers")
     public List<Customer> getCustomers(String path) throws IOException {
 
-        Assert.notNull(path, Constants.INVALID_FILE_PATH);
-
+        Assert.notNull(path, Constants.NO_FILE_PATH);
         List<Customer> customers = new ArrayList<>();
-        URL url = new URL(path);
 
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestMethod(GET);
-        connection.connect();
+        try {
+            URL url = new URL(path);
 
-        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
-            String line;
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod(GET);
+            connection.connect();
 
-            //Read customers line by line and deserialize them
-            while ((line = bufferedReader.readLine()) != null) {
-                Customer customer = CommonUtils.getCustomer(line);
-                customers.add(customer);
+            try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+                String line;
+
+                //Read customers line by line and deserialize them
+                while ((line = bufferedReader.readLine()) != null) {
+                    Customer customer = CommonUtils.getCustomer(line);
+                    customers.add(customer);
+                }
             }
+            connection.disconnect();
+        } catch (MalformedURLException e) {
+            LOGGER.error("Url {} is invalid", path);
+            throw new InvalidFileException(Constants.INVALID_FILE_PATH);
         }
-        connection.disconnect();
+
+        if (LOGGER.isDebugEnabled()) {
+            LOGGER.debug("Fetching from URL {}", path);
+        }
 
         //Sort the list by userId. We are sorting here to avoid soring every time during API call.
         customers.sort(Comparator.comparing(Customer::getId));

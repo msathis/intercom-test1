@@ -48,12 +48,12 @@ Same output is stored in `logs/output.log` file also.
 
 1. [Spring Boot](https://spring.io/projects/spring-boot) as bootstrap project.
 2. [Gson](https://github.com/google/gson) for json serDe.
-3. [Lombok](https://projectlombok.org/) for productivity. 
+3. [Lombok](https://projectlombok.org/) for productivity. Reduces verbosity of code and generates Getters, Setters etc during compile time.
 
 ### Code Coverage
-1. Class  - 87%
-2. Method - 61%
-3. Line   - 70%
+1. Class  - 100%
+2. Method - 83%
+3. Line   - 88%
 
 ### Reference Documentation
 For further reference, please consider the following sections:

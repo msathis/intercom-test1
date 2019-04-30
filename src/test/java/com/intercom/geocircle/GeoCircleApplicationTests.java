@@ -60,4 +60,10 @@ public class GeoCircleApplicationTests {
         ApplicationArguments args = new DefaultApplicationArguments(new String[]{"--" + Constants.FILEPATH_OPTION_NAME + "=" + NON_EXISTING_URL});
         applicationRunner.run(args);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testNoFileUrl() throws Exception {
+        ApplicationArguments args = new DefaultApplicationArguments(new String[]{"--" + Constants.FILEPATH_OPTION_NAME + "="});
+        applicationRunner.run(args);
+    }
 }
