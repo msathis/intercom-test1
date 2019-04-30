@@ -1,5 +1,6 @@
 package com.intercom.geocircle.service.impl;
 
+import com.intercom.geocircle.common.Constants;
 import com.intercom.geocircle.model.Customer;
 import com.intercom.geocircle.model.Location;
 import com.intercom.geocircle.service.CustomerService;
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -36,6 +38,9 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     @Cacheable("customers")
     public List<Customer> getCustomers(String path) throws IOException {
+
+        Assert.notNull(path, Constants.INVALID_FILE_PATH);
+
         List<Customer> customers = new ArrayList<>();
         URL url = new URL(path);
 

@@ -47,8 +47,8 @@ Same output is stored in `logs/output.log` file also.
 
 ### Code Coverage
 1. Class  - 87%
-2. Method - 57%
-3. Line   - 68%
+2. Method - 61%
+3. Line   - 70%
 
 ### Reference Documentation
 For further reference, please consider the following sections:
