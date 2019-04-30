@@ -88,19 +88,25 @@
 <i>14</i>&nbsp;
 <b class="fc"><i>15</i>&nbsp;    private double longitude;</b>
 <i>16</i>&nbsp;
-<i>17</i>&nbsp;    public static Location toRadian(Location location) {
-<b class="fc"><i>18</i>&nbsp;        if (location == null) {</b>
-<b class="fc"><i>19</i>&nbsp;            throw new InvalidLocationException(&quot;Location is null. Unable to convert its latitude and longitude values to radian&quot;);</b>
-<i>20</i>&nbsp;        }
-<b class="fc"><i>21</i>&nbsp;        return new Location(Math.toRadians(location.getLatitude()), Math.toRadians(location.getLongitude()));</b>
-<i>22</i>&nbsp;    }
-<i>23</i>&nbsp;}
+<i>17</i>&nbsp;    /**
+<i>18</i>&nbsp;     * Converts degree to Radian
+<i>19</i>&nbsp;     *
+<i>20</i>&nbsp;     * @param location
+<i>21</i>&nbsp;     * @return
+<i>22</i>&nbsp;     */
+<i>23</i>&nbsp;    public static Location toRadian(Location location) {
+<b class="fc"><i>24</i>&nbsp;        if (location == null) {</b>
+<b class="fc"><i>25</i>&nbsp;            throw new InvalidLocationException(&quot;Location is null. Unable to convert its latitude and longitude values to radian&quot;);</b>
+<i>26</i>&nbsp;        }
+<b class="fc"><i>27</i>&nbsp;        return new Location(Math.toRadians(location.getLatitude()), Math.toRadians(location.getLongitude()));</b>
+<i>28</i>&nbsp;    }
+<i>29</i>&nbsp;}
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2019-04-30 02:21</div>
+    <div style="float:right;">generated on 2019-04-30 09:57</div>
 </div>
 </body>
 </html>

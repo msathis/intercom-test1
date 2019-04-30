@@ -50,24 +50,24 @@
     100%
   </span>
   <span class="absValue">
-    (21/ 21)
+    (22/ 22)
   </span>
 </td>
 </tr>
   <tr>
-    <td class="name">CustomerServiceImpl$MockitoMock$1973059912</td>
+    <td class="name">CustomerServiceImpl$MockitoMock$72177604</td>
   </tr>
   <tr>
-    <td class="name">CustomerServiceImpl$MockitoMock$1973059912$auxiliary$6PejRPH2</td>
+    <td class="name">CustomerServiceImpl$MockitoMock$72177604$auxiliary$8earMkRp</td>
   </tr>
   <tr>
-    <td class="name">CustomerServiceImpl$MockitoMock$1973059912$auxiliary$GgjePGMP</td>
+    <td class="name">CustomerServiceImpl$MockitoMock$72177604$auxiliary$AQx8oOjy</td>
   </tr>
   <tr>
-    <td class="name">CustomerServiceImpl$MockitoMock$1973059912$auxiliary$UFOmUS4X</td>
+    <td class="name">CustomerServiceImpl$MockitoMock$72177604$auxiliary$k1uXLNzQ</td>
   </tr>
   <tr>
-    <td class="name">CustomerServiceImpl$MockitoMock$1973059912$auxiliary$zKpGQuPf</td>
+    <td class="name">CustomerServiceImpl$MockitoMock$72177604$auxiliary$ZCNrdHuh</td>
   </tr>
 <tr>
   <td class="name"><strong>total</strong></td>
@@ -84,7 +84,7 @@
     100%
   </span>
   <span class="absValue">
-    (21/ 21)
+    (22/ 22)
   </span>
 </td>
 </tr>
@@ -96,92 +96,97 @@
 
 <div class="sourceCode"><i>1</i>&nbsp;package com.intercom.geocircle.service.impl;
 <i>2</i>&nbsp;
-<i>3</i>&nbsp;import com.intercom.geocircle.model.Customer;
-<i>4</i>&nbsp;import com.intercom.geocircle.model.Location;
-<i>5</i>&nbsp;import com.intercom.geocircle.service.CustomerService;
-<i>6</i>&nbsp;import com.intercom.geocircle.utils.CommonUtils;
-<i>7</i>&nbsp;import lombok.NoArgsConstructor;
-<i>8</i>&nbsp;import lombok.extern.slf4j.Slf4j;
-<i>9</i>&nbsp;import org.springframework.cache.annotation.Cacheable;
-<i>10</i>&nbsp;import org.springframework.stereotype.Service;
-<i>11</i>&nbsp;
-<i>12</i>&nbsp;import java.io.BufferedReader;
-<i>13</i>&nbsp;import java.io.IOException;
-<i>14</i>&nbsp;import java.io.InputStreamReader;
-<i>15</i>&nbsp;import java.net.HttpURLConnection;
-<i>16</i>&nbsp;import java.net.URL;
-<i>17</i>&nbsp;import java.util.ArrayList;
-<i>18</i>&nbsp;import java.util.Comparator;
-<i>19</i>&nbsp;import java.util.List;
-<i>20</i>&nbsp;import java.util.stream.Collectors;
-<i>21</i>&nbsp;
-<b class="fc"><i>22</i>&nbsp;@Slf4j</b>
-<i>23</i>&nbsp;@Service(&quot;CustomerServiceImpl&quot;)
-<b class="fc"><i>24</i>&nbsp;@NoArgsConstructor</b>
-<i>25</i>&nbsp;public class CustomerServiceImpl implements CustomerService {
-<i>26</i>&nbsp;
-<i>27</i>&nbsp;    private static final String GET = &quot;GET&quot;;
+<i>3</i>&nbsp;import com.intercom.geocircle.common.Constants;
+<i>4</i>&nbsp;import com.intercom.geocircle.model.Customer;
+<i>5</i>&nbsp;import com.intercom.geocircle.model.Location;
+<i>6</i>&nbsp;import com.intercom.geocircle.service.CustomerService;
+<i>7</i>&nbsp;import com.intercom.geocircle.utils.CommonUtils;
+<i>8</i>&nbsp;import lombok.NoArgsConstructor;
+<i>9</i>&nbsp;import lombok.extern.slf4j.Slf4j;
+<i>10</i>&nbsp;import org.springframework.cache.annotation.Cacheable;
+<i>11</i>&nbsp;import org.springframework.stereotype.Service;
+<i>12</i>&nbsp;import org.springframework.util.Assert;
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;import java.io.BufferedReader;
+<i>15</i>&nbsp;import java.io.IOException;
+<i>16</i>&nbsp;import java.io.InputStreamReader;
+<i>17</i>&nbsp;import java.net.HttpURLConnection;
+<i>18</i>&nbsp;import java.net.URL;
+<i>19</i>&nbsp;import java.util.ArrayList;
+<i>20</i>&nbsp;import java.util.Comparator;
+<i>21</i>&nbsp;import java.util.List;
+<i>22</i>&nbsp;import java.util.stream.Collectors;
+<i>23</i>&nbsp;
+<b class="fc"><i>24</i>&nbsp;@Slf4j</b>
+<i>25</i>&nbsp;@Service(&quot;CustomerServiceImpl&quot;)
+<b class="fc"><i>26</i>&nbsp;@NoArgsConstructor</b>
+<i>27</i>&nbsp;public class CustomerServiceImpl implements CustomerService {
 <i>28</i>&nbsp;
-<i>29</i>&nbsp;    /**
-<i>30</i>&nbsp;     * Returns master data of customers. This list is sorted and cached for future requests.
-<i>31</i>&nbsp;     *
-<i>32</i>&nbsp;     * @param path path to file containing customer details
-<i>33</i>&nbsp;     * @return an object of {@link List&lt;Customer&gt; }
-<i>34</i>&nbsp;     * @throws IOException Throws IOException if the url is invalid or data is corrupted.
-<i>35</i>&nbsp;     */
-<i>36</i>&nbsp;    @Override
-<i>37</i>&nbsp;    @Cacheable(&quot;customers&quot;)
-<i>38</i>&nbsp;    public List&lt;Customer&gt; getCustomers(String path) throws IOException {
-<b class="fc"><i>39</i>&nbsp;        List&lt;Customer&gt; customers = new ArrayList&lt;&gt;();</b>
-<b class="fc"><i>40</i>&nbsp;        URL url = new URL(path);</b>
+<i>29</i>&nbsp;    private static final String GET = &quot;GET&quot;;
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;    /**
+<i>32</i>&nbsp;     * Returns master data of customers. This list is sorted and cached for future requests.
+<i>33</i>&nbsp;     *
+<i>34</i>&nbsp;     * @param path path to file containing customer details
+<i>35</i>&nbsp;     * @return an object of {@link List&lt;Customer&gt; }
+<i>36</i>&nbsp;     * @throws IOException Throws IOException if the url is invalid or data is corrupted.
+<i>37</i>&nbsp;     */
+<i>38</i>&nbsp;    @Override
+<i>39</i>&nbsp;    @Cacheable(&quot;customers&quot;)
+<i>40</i>&nbsp;    public List&lt;Customer&gt; getCustomers(String path) throws IOException {
 <i>41</i>&nbsp;
-<b class="fc"><i>42</i>&nbsp;        HttpURLConnection connection = (HttpURLConnection) url.openConnection();</b>
-<b class="fc"><i>43</i>&nbsp;        connection.setRequestMethod(GET);</b>
-<b class="fc"><i>44</i>&nbsp;        connection.connect();</b>
-<i>45</i>&nbsp;
-<b class="fc"><i>46</i>&nbsp;        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {</b>
-<i>47</i>&nbsp;            String line;
-<i>48</i>&nbsp;
-<i>49</i>&nbsp;            //Read customers line by line and deserialize them
-<b class="fc"><i>50</i>&nbsp;            while ((line = bufferedReader.readLine()) != null) {</b>
-<b class="fc"><i>51</i>&nbsp;                Customer customer = CommonUtils.getCustomer(line);</b>
-<b class="fc"><i>52</i>&nbsp;                customers.add(customer);</b>
-<b class="fc"><i>53</i>&nbsp;            }</b>
-<b class="fc"><i>54</i>&nbsp;        }</b>
-<b class="fc"><i>55</i>&nbsp;        connection.disconnect();</b>
-<i>56</i>&nbsp;
-<i>57</i>&nbsp;        //Sort the list by userId. We are sorting here to avoid soring every time during API call.
-<b class="fc"><i>58</i>&nbsp;        customers.sort(Comparator.comparing(Customer::getId));</b>
-<b class="fc"><i>59</i>&nbsp;        LOGGER.info(&quot;Total fetched customers: {}&quot;, customers.size());</b>
-<b class="fc"><i>60</i>&nbsp;        return customers;</b>
-<i>61</i>&nbsp;    }
-<i>62</i>&nbsp;
-<i>63</i>&nbsp;
-<i>64</i>&nbsp;    /**
-<i>65</i>&nbsp;     * Returns list of customers within defined range. Default value of range is 100km
-<i>66</i>&nbsp;     *
-<i>67</i>&nbsp;     * @param allCustomers   {@link List&lt;Customer&gt; }
-<i>68</i>&nbsp;     * @param officeLocation {@link Location}
-<i>69</i>&nbsp;     * @param distance       Maximum distance range
-<i>70</i>&nbsp;     * @return an object of {@link List&lt;Customer&gt; }
-<i>71</i>&nbsp;     * @throws IOException If the master data is not fetchable IOException is thrown
-<i>72</i>&nbsp;     */
-<i>73</i>&nbsp;    public List&lt;Customer&gt; searchCustomersWithinDistance(List&lt;Customer&gt; allCustomers, Location officeLocation, Double distance)
-<i>74</i>&nbsp;            throws IOException {
-<i>75</i>&nbsp;
-<i>76</i>&nbsp;        //Filter only customers within distance of given range. Default range value is 100km
-<b class="fc"><i>77</i>&nbsp;        return allCustomers.stream()</b>
-<b class="fc"><i>78</i>&nbsp;                .filter(customer -&gt; CommonUtils.calculateDistance(customer.getLocation(),</b>
-<b class="fc"><i>79</i>&nbsp;                        officeLocation) &lt;= distance)</b>
-<b class="fc"><i>80</i>&nbsp;                .collect(Collectors.toList());</b>
-<i>81</i>&nbsp;    }
-<i>82</i>&nbsp;}
+<b class="fc"><i>42</i>&nbsp;        Assert.notNull(path, Constants.INVALID_FILE_PATH);</b>
+<i>43</i>&nbsp;
+<b class="fc"><i>44</i>&nbsp;        List&lt;Customer&gt; customers = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>45</i>&nbsp;        URL url = new URL(path);</b>
+<i>46</i>&nbsp;
+<b class="fc"><i>47</i>&nbsp;        HttpURLConnection connection = (HttpURLConnection) url.openConnection();</b>
+<b class="fc"><i>48</i>&nbsp;        connection.setRequestMethod(GET);</b>
+<b class="fc"><i>49</i>&nbsp;        connection.connect();</b>
+<i>50</i>&nbsp;
+<b class="fc"><i>51</i>&nbsp;        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {</b>
+<i>52</i>&nbsp;            String line;
+<i>53</i>&nbsp;
+<i>54</i>&nbsp;            //Read customers line by line and deserialize them
+<b class="fc"><i>55</i>&nbsp;            while ((line = bufferedReader.readLine()) != null) {</b>
+<b class="fc"><i>56</i>&nbsp;                Customer customer = CommonUtils.getCustomer(line);</b>
+<b class="fc"><i>57</i>&nbsp;                customers.add(customer);</b>
+<b class="fc"><i>58</i>&nbsp;            }</b>
+<b class="fc"><i>59</i>&nbsp;        }</b>
+<b class="fc"><i>60</i>&nbsp;        connection.disconnect();</b>
+<i>61</i>&nbsp;
+<i>62</i>&nbsp;        //Sort the list by userId. We are sorting here to avoid soring every time during API call.
+<b class="fc"><i>63</i>&nbsp;        customers.sort(Comparator.comparing(Customer::getId));</b>
+<b class="fc"><i>64</i>&nbsp;        LOGGER.info(&quot;Total fetched customers: {}&quot;, customers.size());</b>
+<b class="fc"><i>65</i>&nbsp;        return customers;</b>
+<i>66</i>&nbsp;    }
+<i>67</i>&nbsp;
+<i>68</i>&nbsp;
+<i>69</i>&nbsp;    /**
+<i>70</i>&nbsp;     * Returns list of customers within defined range. Default value of range is 100km
+<i>71</i>&nbsp;     *
+<i>72</i>&nbsp;     * @param allCustomers   {@link List&lt;Customer&gt; }
+<i>73</i>&nbsp;     * @param officeLocation {@link Location}
+<i>74</i>&nbsp;     * @param distance       Maximum distance range
+<i>75</i>&nbsp;     * @return an object of {@link List&lt;Customer&gt; }
+<i>76</i>&nbsp;     * @throws IOException If the master data is not fetchable IOException is thrown
+<i>77</i>&nbsp;     */
+<i>78</i>&nbsp;    public List&lt;Customer&gt; searchCustomersWithinDistance(List&lt;Customer&gt; allCustomers, Location officeLocation, Double distance)
+<i>79</i>&nbsp;            throws IOException {
+<i>80</i>&nbsp;
+<i>81</i>&nbsp;        //Filter only customers within distance of given range. Default range value is 100km
+<b class="fc"><i>82</i>&nbsp;        return allCustomers.stream()</b>
+<b class="fc"><i>83</i>&nbsp;                .filter(customer -&gt; CommonUtils.calculateDistance(customer.getLocation(),</b>
+<b class="fc"><i>84</i>&nbsp;                        officeLocation) &lt;= distance)</b>
+<b class="fc"><i>85</i>&nbsp;                .collect(Collectors.toList());</b>
+<i>86</i>&nbsp;    }
+<i>87</i>&nbsp;}
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2019-04-30 02:21</div>
+    <div style="float:right;">generated on 2019-04-30 09:57</div>
 </div>
 </body>
 </html>

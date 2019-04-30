@@ -14,6 +14,11 @@ Please issue this command from terminal from project root folder.
 
 Please issue this command from terminal from project root folder.
 
+### Assumptions
+I made the following assumptions
+
+1. File is a http url (probably S3).
+2. Single system can hold all customers in memory.
 
 ### Output
 

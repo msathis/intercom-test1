@@ -74,21 +74,24 @@
 
 <div class="sourceCode"><i>1</i>&nbsp;package com.intercom.geocircle.exception;
 <i>2</i>&nbsp;
-<i>3</i>&nbsp;public class InvalidLocationException extends RuntimeException {
-<i>4</i>&nbsp;    public InvalidLocationException(String message) {
-<b class="fc"><i>5</i>&nbsp;        super(message);</b>
-<b class="fc"><i>6</i>&nbsp;    }</b>
-<i>7</i>&nbsp;
-<i>8</i>&nbsp;    public InvalidLocationException(String message, Throwable cause) {
-<b class="nc"><i>9</i>&nbsp;        super(message, cause);</b>
-<b class="nc"><i>10</i>&nbsp;    }</b>
-<i>11</i>&nbsp;}
+<i>3</i>&nbsp;/**
+<i>4</i>&nbsp; * Thrown when latitude or longitude of a location is wrong.
+<i>5</i>&nbsp; */
+<i>6</i>&nbsp;public class InvalidLocationException extends RuntimeException {
+<i>7</i>&nbsp;    public InvalidLocationException(String message) {
+<b class="fc"><i>8</i>&nbsp;        super(message);</b>
+<b class="fc"><i>9</i>&nbsp;    }</b>
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;    public InvalidLocationException(String message, Throwable cause) {
+<b class="nc"><i>12</i>&nbsp;        super(message, cause);</b>
+<b class="nc"><i>13</i>&nbsp;    }</b>
+<i>14</i>&nbsp;}
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2019-04-30 02:21</div>
+    <div style="float:right;">generated on 2019-04-30 09:57</div>
 </div>
 </body>
 </html>
